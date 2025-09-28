@@ -1,0 +1,27 @@
+{
+  "name": "vibesniff-lite",
+  "version": "1.0.0",
+  "description": "A minimal tool to detect suspicious AI-generated scam/phishing websites",
+  "type": "module",
+  "main": "scan.js",
+  "scripts": {
+    "scan": "node scan.js",
+    "server": "node server.js",
+    "test": "node scan.js https://example.com",
+    "demo": "node scan.js https://github.com && open reports/*.html"
+  },
+  "keywords": ["security", "phishing", "scam", "detection", "puppeteer"],
+  "author": "VibeSniff Lite",
+  "license": "MIT",
+  "dependencies": {
+    "puppeteer": "^21.5.2",
+    "cheerio": "^1.0.0-rc.12",
+    "whois-json": "^2.0.0",
+    "express": "^4.18.2",
+    "chart.js": "^4.4.0",
+    "canvas": "^2.11.2"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}

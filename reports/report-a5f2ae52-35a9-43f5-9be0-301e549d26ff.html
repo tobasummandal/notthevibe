@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VibeSniff Report - httpbin.org</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        .container { 
+            max-width: 1200px; 
+            margin: 0 auto; 
+            background: white; 
+            border-radius: 20px; 
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+        .header { 
+            background: linear-gradient(135deg, #28a745 0%, #007412 100%);
+            color: white; 
+            padding: 40px; 
+            text-align: center;
+        }
+        .risk-badge {
+            display: inline-block;
+            background: rgba(255,255,255,0.2);
+            padding: 10px 20px;
+            border-radius: 25px;
+            font-size: 18px;
+            font-weight: bold;
+            margin: 10px 0;
+        }
+        .score-circle {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background: conic-gradient(#28a745 0deg, #28a745 36deg, #e0e0e0 36deg, #e0e0e0 360deg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 20px auto;
+            position: relative;
+        }
+        .score-circle::before {
+            content: '';
+            width: 80px;
+            height: 80px;
+            background: white;
+            border-radius: 50%;
+            position: absolute;
+        }
+        .score-text {
+            font-size: 24px;
+            font-weight: bold;
+            color: #28a745;
+            z-index: 1;
+        }
+        .content { padding: 40px; }
+        .grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
+            gap: 30px; 
+            margin: 30px 0;
+        }
+        .card { 
+            background: #f8f9fa; 
+            padding: 25px; 
+            border-radius: 15px; 
+            border-left: 5px solid #28a745;
+        }
+        .card h3 { 
+            color: #28a745; 
+            margin-bottom: 15px; 
+            font-size: 18px;
+        }
+        .metric { 
+            display: flex; 
+            justify-content: space-between; 
+            margin: 10px 0; 
+            padding: 8px 0;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        .metric:last-child { border-bottom: none; }
+        .metric-label { font-weight: 500; color: #666; }
+        .metric-value { font-weight: bold; color: #333; }
+        .reasons { 
+            background: #fff3cd; 
+            border: 1px solid #ffeaa7; 
+            border-radius: 10px; 
+            padding: 20px; 
+            margin: 20px 0;
+        }
+        .reasons h4 { color: #856404; margin-bottom: 15px; }
+        .reasons ul { list-style: none; }
+        .reasons li { 
+            padding: 8px 0; 
+            border-bottom: 1px solid #ffeaa7; 
+            color: #856404;
+        }
+        .reasons li:last-child { border-bottom: none; }
+        .chart-container { 
+            background: white; 
+            padding: 20px; 
+            border-radius: 15px; 
+            margin: 20px 0;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+        }
+        .footer { 
+            background: #f8f9fa; 
+            padding: 20px; 
+            text-align: center; 
+            color: #666;
+            border-top: 1px solid #e0e0e0;
+        }
+        .suspicious { color: #dc3545; font-weight: bold; }
+        .warning { color: #ffc107; font-weight: bold; }
+        .safe { color: #28a745; font-weight: bold; }
+        .code { 
+            background: #f1f3f4; 
+            padding: 2px 6px; 
+            border-radius: 4px; 
+            font-family: 'Monaco', 'Menlo', monospace; 
+            font-size: 12px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🔍 VibeSniff Lite Report</h1>
+            <div class="risk-badge">Risk Level: LOW</div>
+            <div class="score-circle">
+                <div class="score-text">10%</div>
+            </div>
+            <h2>httpbin.org</h2>
+            <p class="code">https://httpbin.org</p>
+        </div>
+
+        <div class="content">
+            
+    <div class="reasons">
+        <h4>🚨 Security Analysis Results</h4>
+        <ul>
+            <li>Contains popup or redirect scripts</li>
+        </ul>
+    </div>
+            
+            <div class="grid">
+                
+    <div class="card">
+        <h3>🌐 Domain Information</h3>
+        <div class="metric">
+            <span class="metric-label">Domain Age</span>
+            <span class="metric-value safe">
+                5222 days
+            </span>
+        </div>
+        <div class="metric">
+            <span class="metric-label">TLS Certificate Age</span>
+            <span class="metric-value safe">
+                71 days
+            </span>
+        </div>
+        <div class="metric">
+            <span class="metric-label">Wayback First Seen</span>
+            <span class="metric-value">
+                5219 days ago
+            </span>
+        </div>
+        <div class="metric">
+            <span class="metric-label">Protocol</span>
+            <span class="metric-value">https:</span>
+        </div>
+    </div>
+                
+    <div class="card">
+        <h3>📄 Content Analysis</h3>
+        <div class="metric">
+            <span class="metric-label">Page Title</span>
+            <span class="metric-value">httpbin.org</span>
+        </div>
+        <div class="metric">
+            <span class="metric-label">Total Headings</span>
+            <span class="metric-value">2</span>
+        </div>
+        <div class="metric">
+            <span class="metric-label">Suspicious Keywords</span>
+            <span class="metric-value safe">
+                0
+            </span>
+        </div>
+        <div class="metric">
+            <span class="metric-label">Has Popups/Redirects</span>
+            <span class="metric-value suspicious">
+                Yes
+            </span>
+        </div>
+    </div>
+                
+    <div class="card">
+        <h3>📝 Form Analysis</h3>
+        <div class="metric">
+            <span class="metric-label">Total Forms</span>
+            <span class="metric-value">0</span>
+        </div>
+        <div class="metric">
+            <span class="metric-label">Password Inputs</span>
+            <span class="metric-value safe">
+                0
+            </span>
+        </div>
+        <div class="metric">
+            <span class="metric-label">Email Inputs</span>
+            <span class="metric-value">0</span>
+        </div>
+        <div class="metric">
+            <span class="metric-label">Suspicious Actions</span>
+            <span class="metric-value safe">
+                0
+            </span>
+        </div>
+    </div>
+                
+    <div class="card">
+        <h3>🔗 Link Analysis</h3>
+        <div class="metric">
+            <span class="metric-label">Total Links</span>
+            <span class="metric-value">5</span>
+        </div>
+        <div class="metric">
+            <span class="metric-label">External Links</span>
+            <span class="metric-value">4</span>
+        </div>
+        <div class="metric">
+            <span class="metric-label">Suspicious Link Patterns</span>
+            <span class="metric-value safe">
+                0
+            </span>
+        </div>
+    </div>
+                
+    <div class="card">
+        <h3>⚙️ Technical Details</h3>
+        <div class="metric">
+            <span class="metric-label">Domain</span>
+            <span class="metric-value">httpbin.org</span>
+        </div>
+        <div class="metric">
+            <span class="metric-label">eTLD+1</span>
+            <span class="metric-value">httpbin.org</span>
+        </div>
+        <div class="metric">
+            <span class="metric-label">Port</span>
+            <span class="metric-value">443</span>
+        </div>
+        <div class="metric">
+            <span class="metric-label">Path</span>
+            <span class="metric-value">/</span>
+        </div>
+    </div>
+                
+    <div class="card">
+        <h3>📦 Resource Analysis</h3>
+        <div class="metric">
+            <span class="metric-label">External Hosts</span>
+            <span class="metric-value safe">
+                1
+            </span>
+        </div>
+        <div class="metric">
+            <span class="metric-label">Iframes</span>
+            <span class="metric-value">0</span>
+        </div>
+        <div class="metric">
+            <span class="metric-label">Suspicious Iframes</span>
+            <span class="metric-value safe">
+                0
+            </span>
+        </div>
+    </div>
+            </div>
+
+            
+    <div class="chart-container">
+        <h3>📊 Risk Analysis</h3>
+        <canvas id="riskChart" width="400" height="200"></canvas>
+    </div>
+    
+    <div class="chart-container">
+        <h3>📈 Resource Distribution</h3>
+        <canvas id="hostsChart" width="400" height="200"></canvas>
+    </div>
+        </div>
+
+        <div class="footer">
+            <p>Generated by VibeSniff Lite on 9/28/2025, 6:58:35 AM</p>
+            <p>Report ID: a5f2ae52-35a9-43f5-9be0-301e549d26ff</p>
+        </div>
+    </div>
+
+    <script>
+        // Risk factors chart
+        const riskCtx = document.getElementById('riskChart');
+        if (riskCtx) {
+            new Chart(riskCtx, {
+                type: 'doughnut',
+                data: {
+                    labels: ["Popups/Redirects"],
+                    datasets: [{
+                        data: [0.1],
+                        backgroundColor: [
+                            '#ff6384', '#36a2eb', '#ffce56', '#4bc0c0', 
+                            '#9966ff', '#ff9f40', '#ff6384', '#c9cbcf'
+                        ]
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    plugins: {
+                        legend: { position: 'bottom' }
+                    }
+                }
+            });
+        }
+
+        // External hosts chart
+        const hostsCtx = document.getElementById('hostsChart');
+        if (hostsCtx) {
+            new Chart(hostsCtx, {
+                type: 'bar',
+                data: {
+                    labels: ['External Hosts', 'Internal Resources'],
+                    datasets: [{
+                        label: 'Resource Count',
+                        data: [1, 9],
+                        backgroundColor: ['#ff6384', '#36a2eb']
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    scales: { y: { beginAtZero: true } }
+                }
+            });
+        }
+    </script>
+</body>
+</html>
