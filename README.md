@@ -11,8 +11,8 @@ A comprehensive security analysis tool that detects suspicious AI-generated scam
 
 ```bash
 # Clone and run
-git clone <your-repo>
-cd vibesniff-lite
+git clone https://github.com/tobasummandal/notthevibe
+cd notthevibe-lite
 npm install
 npm run demo
 
@@ -257,7 +257,7 @@ The project uses modern ES modules (`type: "module"` in package.json) and requir
 ### Project Structure
 
 ```
-vibesniff-lite/
+notthevibe-lite/
 ├── scan.js              # Core scanner (CLI)
 ├── server.js            # Express API server  
 ├── visualizer.js        # HTML report generator
