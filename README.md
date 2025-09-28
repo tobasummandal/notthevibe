@@ -140,7 +140,7 @@ The tool calculates a comprehensive suspiciousness score (0.0 to 1.0) based on m
 - **MEDIUM** (0.4-0.7): Multiple concerning patterns
 - **HIGH** (0.7-1.0): Highly suspicious, likely malicious
 
-## 📊 Enhanced Output Format
+## 📊 Output Format
 
 The tool now provides comprehensive analysis data:
 
